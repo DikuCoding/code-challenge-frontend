@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { validateEmail, validatePassword } from '../utility/validation'
+import { validateEmail, validatePassword } from '../utilities/validation'
 import { Link } from 'react-router-dom'
 import { registerApi, loginApi} from '../apis/authentication'
 import { useNavigate } from 'react-router-dom'

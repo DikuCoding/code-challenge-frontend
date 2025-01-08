@@ -9,7 +9,7 @@ import Authentication, {PageType} from './pages/Authentication.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*",
     element: <App/>
   },
   {
