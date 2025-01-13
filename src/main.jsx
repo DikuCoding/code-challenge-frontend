@@ -20,10 +20,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Authentication pageType={PageType.REGISTER}/>
   },
-  {
-    path: "/add-challenge",
-    element: <AddChallenge pageType={PageType.REGISTER}/>
-  },
+  // {
+  //   path: "/add-challenge",
+  //   element: <AddChallenge pageType={PageType.REGISTER}/>
+  // },
 ])
 
 createRoot(document.getElementById('root')).render(

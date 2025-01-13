@@ -34,28 +34,40 @@ const Authentication = ({pageType}) => {
         setPassword(e.target.value)
     }
 
-    const handleResponse = async([response , error]) => {
-        if(error){
-            setErrors({
-                ...errors,
-                api: error
-            })
+   
+    const handleResponse = async ([response, error]) => {
+      if (error) {
+        setErrors({
+          ...errors,
+          api: error,
+        });
+        return;
+      }
+    
+      if (response) {
+        const jwt = response.headers.get('Authorization');
+        // console.log(data);
+        
+        if (!jwt) {
+          setErrors({
+            ...errors,
+            api: 'Authorization token is missing in the response.',
+          });
+          return;
         }
-        else{
-            const jwt = response.headers.get('Authorization')
-            const result =  await response.json();
-            // const message = result.message
-            // const user = result.data
-
-            // console.log("message: ", message)
-            // console.log("user: ", user)
-
-            setCookie("jwt", jwt)
-            console.log("cookies: ", cookies.jwt)
-
-            navigate("/")
-        }
-    }
+        
+        const result = await response.json();
+        // const data = result.body.data;
+        // console.log(result)
+        // console.log(result.data)
+        setCookie('user', JSON.stringify(result.data))
+        setCookie('jwt', jwt); // Save the JWT to cookies
+        console.log('JWT set in cookies:', jwt);
+    
+        navigate('/');
+      }
+    };
+    
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
@@ -84,9 +96,6 @@ const Authentication = ({pageType}) => {
                     }
                 })
                 handleResponse([response, error])
-            //Login API call
-            // console.log("result: ", result)
-            // console.log("error: ", error)
 
         }
         else{

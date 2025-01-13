@@ -29,7 +29,7 @@ const AddChallenge = () => {
   const [errors, setErrors] = useState(initialErrorsState)
 
     console.log("JWT Token from cookies:", cookies.jwt);
-
+  
   const handleResponse = async([response , error]) => {   
     if(error){
         setErrors({
@@ -64,43 +64,7 @@ const AddChallenge = () => {
 
     setMessage("");
 
-    // const challengeData = {
-    //   challenge: {
-    //     title,
-    //     description,
-    //     start_date: startDate,
-    //     end_date: endDate,
-    //   },
-    // };
-
-    // try {
-    //   const response = await fetch("http://127.0.0.1:3000/api/v1/challenges", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${authToken}`, // Add Authorization token here
-    //     },
-    //     body: JSON.stringify(challengeData),
-    //   });
-
-    //   if (response.ok) {
-    //     const result = await response.json();
-    //     setMessage("Challenge added successfully!");
-    //     console.log("Response:", result);
-    //     // Clear the form
-    //     setTitle("");
-    //     setDescription("");
-    //     setStartDate("");
-    //     setEndDate("");
-    //   } else {
-    //     const error = await response.json();
-    //     setMessage(`Failed to add challenge: ${error.message || "Unknown error"}`);
-    //     console.error("Error:", error);
-    //   }
-    // } catch (err) {
-    //   setMessage("An error occurred while adding the challenge.");
-    //   console.error("Error:", err);
-    // }
+    
     addChallengeApi()
     
   };
@@ -119,8 +83,8 @@ const AddChallenge = () => {
 }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6">
+    <div className="flex items-center justify-center mt-6">
+      <div className="w-full max-w-md bg-gray-100 rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
           Add Challenge
         </h2>

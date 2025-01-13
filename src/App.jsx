@@ -9,16 +9,17 @@ import ChallengeList from './container/challengeList'
 import {Route, Routes} from "react-router-dom"
 import Challenge from './pages/Challenge'
 import AddChallenge from './pages/AddChallenge'
+import EditChallenge from './components/EditChallenge'
 
 function App() {
   return (
     <>
     <Navbar/>
-    {/* <ChallengesList/> */}
     <Routes>
     <Route path={`/challenge/:id`} element={<Challenge/>}/>
 
     <Route path={`/challenge/`} element={<Challenge/>}/>
+    {/* <Route path={`/login`} element={<Authentication/>}/> */}
 
       <Route path="/" element={
         <>
@@ -33,6 +34,7 @@ function App() {
         </>
       }
        />
+       <Route path="/edit-challenge/:id" element={<EditChallenge />} /> {/* New route */}
     </Routes>
     
 
